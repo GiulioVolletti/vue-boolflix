@@ -27,7 +27,7 @@
 
       <main>
         <div class="container">
-          <div v-for="search in arraySearch" class="img_container">
+          <div v-if="search.poster_path" v-for="search in arraySearch" class="img_container">
 
             <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
 

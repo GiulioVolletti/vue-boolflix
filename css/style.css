@@ -54,7 +54,7 @@ main .container {
   justify-content: center;
 }
 .img_container {
-  margin: 10px;
+  margin: 15px;
   cursor: pointer;
   height: 330px;
   border: 2px solid white;
