@@ -50,10 +50,13 @@ header h1 {
 main .container {
   padding-top: 50px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .img_container {
+  margin: 10px;
   cursor: pointer;
-  height: 342px;
+  height: 330px;
   border: 2px solid white;
   position: relative;
 }
@@ -70,6 +73,7 @@ main .container {
   top: 0;
   left: 0;
   padding: 10px;
+  overflow-y: auto;
 }
 
 .info_display p {

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <!-- vue link cdn -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- my style css -->
@@ -25,12 +27,12 @@
 
       <main>
         <div class="container">
-          <div class="img_container">
-            <img src="https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR71,0,630,1200_AL_.jpg" alt="">
-            <!-- <img src="https://image.tmdb.org/t/p/w220_and_h330_face/" alt=""> -->
+          <div v-for="search in arraySearch" class="img_container">
+
+            <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
             <div class="info_display">
-              <p>Titolo</p>
-              <p>Titolo Originale</p>
+              <p>Titolo: {{search.title}}</p>
+              <p>Titolo Originale:   {{search.original_title}}</p>
               <p>Voto:
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -38,7 +40,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </p>
-              <p>Overview</p>
+              <p>Overview: {{search.overview}}</p>
             </div>
 
           </div>
