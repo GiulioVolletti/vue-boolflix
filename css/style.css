@@ -28,7 +28,7 @@ header .container{
 }
 
 header h1 {
-  color: red;
+  color: #AC1B22;
 }
 
 .user_search i {
@@ -85,7 +85,6 @@ main .container {
 }
 
 .img_container:hover .info_display {
-  transition: 1s;
   display: block;
 }
 
