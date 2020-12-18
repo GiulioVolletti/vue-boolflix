@@ -1,0 +1,48 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#wrapper {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, #080808, #141414);
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+/* header */
+header {
+  height: 80px;
+  background-color: black;
+}
+
+header .container{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: red;
+}
+/* /header */
+
+
+/* main */
+main .container {
+  padding-top: 50px;
+  display: flex;
+}
+.img_container {
+  height: 342px;
+  border: 2px solid white;
+}
+.img_container img {
+  height: 100%;
+}
+/* /main */
