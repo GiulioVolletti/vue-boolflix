@@ -30,17 +30,26 @@
           <div v-for="search in arraySearch" class="img_container">
 
             <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
+
             <div class="info_display">
-              <p>Titolo: {{search.title}}</p>
-              <p>Titolo Originale:   {{search.original_title}}</p>
-              <p>Voto:
+              <p>
+                <strong>Titolo:</strong>
+                 {{search.title}}
+              </p>
+              <p>
+                <strong>Titolo Originale:</strong>   {{search.original_title}}
+              </p>
+              <p><strong>Voto:</strong>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </p>
-              <p>Overview: {{search.overview}}</p>
+              <p>
+                <strong>Overview:</strong>
+                {{search.overview}}
+              </p>
             </div>
 
           </div>
