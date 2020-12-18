@@ -9,13 +9,13 @@ var flixApp = new Vue (
     },
     methods:{
       searchClick: function() {
-        console.log(flixApp.textSearch);
-        if (flixApp.textSearch != "") {
+        console.log(this.textSearch);
+        if (this.textSearch != "") {
           axios
             .get( "https://api.themoviedb.org/3/search/movie/",{
               params:{
                 api_key: "4a59e1623a8f16134b5fe205c4d4923e",
-                query: flixApp.textSearch,
+                query: this.textSearch,
                 language: "it-IT",
               }
             }
@@ -29,8 +29,8 @@ var flixApp = new Vue (
                 }
               );
 
-          flixApp.textSearch = ""
-      };
+          this.textSearch = ""
+        };
       },
 
     },
