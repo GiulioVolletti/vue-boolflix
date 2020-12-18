@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <!-- vue link cdn -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <!-- my style css -->
     <link rel="stylesheet" href="css/style.css">
     <title></title>
@@ -14,7 +16,10 @@
       <header>
         <div class="container">
           <h1>BoolFlix</h1>
-          <input type="text" name="" value="">
+          <div class="user_search">
+            <input type="text" name=""  v-model="textSearch">
+            <i v-on:click="searchClick" class="fas fa-search"></i>
+          </div>
         </div>
       </header>
 
@@ -22,6 +27,19 @@
         <div class="container">
           <div class="img_container">
             <img src="https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR71,0,630,1200_AL_.jpg" alt="">
+            <!-- <img src="https://image.tmdb.org/t/p/w220_and_h330_face/" alt=""> -->
+            <div class="info_display">
+              <p>Titolo</p>
+              <p>Titolo Originale</p>
+              <p>Voto:
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </p>
+              <p>Overview</p>
+            </div>
 
           </div>
         </div>

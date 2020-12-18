@@ -30,6 +30,19 @@ header .container{
 header h1 {
   color: red;
 }
+
+.user_search i {
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 15px;
+  border: 2px solid white;
+}
+.user_search i:hover {
+  transition: 1s;
+  padding: 10px;
+  margin-left: 5px;
+}
 /* /header */
 
 
@@ -39,10 +52,38 @@ main .container {
   display: flex;
 }
 .img_container {
+  cursor: pointer;
   height: 342px;
   border: 2px solid white;
+  position: relative;
 }
 .img_container img {
   height: 100%;
 }
+
+.info_display {
+  display: none;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.info_display p {
+  color: white;
+}
+
+.info_display p .fas {
+  color: yellow;
+}
+
+.img_container:hover .info_display {
+  transition: 1s;
+  display: block;
+}
+
+
 /* /main */
