@@ -66,6 +66,12 @@
                 <i class="fas fa-star"></i> -->
               </p>
               <p>
+                <strong>Cast:</strong>
+                <span  v-for="castName in findCast(search.id)">
+                  {{castName.name}}
+                </span>
+              </p>
+              <p>
                 <strong>Overview:</strong>
                 {{search.overview}}
               </p>
