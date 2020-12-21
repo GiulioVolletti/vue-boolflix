@@ -5,7 +5,7 @@ var flixApp = new Vue (
     data:{
       textSearch: "",
       arraySearch:[],
-
+      number: 3,
     },
     methods:{
       searchClick: function() {

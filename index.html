@@ -43,11 +43,13 @@
                 <strong>Lingua origiinale:</strong>   {{search.original_language}}
               </p>
               <p><strong>Voto:</strong>
+                <i v-if="numbers <= (search.vote_average / 2).toFixed(0)" v-for="numbers in 5" class="fas fa-star"></i>
+                <i v-else class="far fa-star"></i>
+
+                <!-- <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> -->
               </p>
               <p>
                 <strong>Overview:</strong>
