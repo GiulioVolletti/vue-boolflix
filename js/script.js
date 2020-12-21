@@ -5,14 +5,13 @@ var flixApp = new Vue (
     data:{
       textSearch: "",
       arraySearch:[],
-      tvSeriesArray:[],
 
     },
     methods:{
       searchClick: function() {
         console.log(this.textSearch);
         if (this.textSearch != "") {
-
+          this.arraySearch = [];
           axios
             .get( "https://api.themoviedb.org/3/search/movie/",{
               params:{
@@ -43,7 +42,7 @@ var flixApp = new Vue (
               .then(
                 (element2) => {
                   for (var i = 0; i < element2.data.results.length; i++) {
-                    this.tvSeriesArray = element2.data.results
+                    this.arraySearch.push(element2.data.results[i])
                   }
                   // console.log(element2.data.results);
                 }

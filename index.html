@@ -33,45 +33,22 @@
             <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
 
             <div class="info_display">
-              <p>
+              <p v-if="search.title">
                 <strong>Titolo:</strong>
                  {{search.title}}
               </p>
-              <p>
-                <strong>Titolo Originale:</strong>   {{search.original_title}}
-              </p>
-              <p>
-                <strong>Lingua origiinale:</strong>   {{search.original_language}}
-              </p>
-              <p><strong>Voto:</strong>
-                <i v-if="numbers <= (search.vote_average / 2).toFixed(0)" v-for="numbers in 5" class="fas fa-star"></i>
-                <i v-else class="far fa-star"></i>
-
-                <!-- <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i> -->
-              </p>
-              <p>
-                <strong>Overview:</strong>
-                {{search.overview}}
-              </p>
-            </div>
-
-          </div>
-
-          <div v-if="search.poster_path" v-for="search in tvSeriesArray" class="img_container">
-
-            <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
-
-            <div class="info_display">
-              <p>
+              <p v-else-if="search.name">
                 <strong>Titolo:</strong>
                  {{search.name}}
               </p>
-              <p>
+
+              <p v-if="search.original_title">
+                <strong>Titolo Originale:</strong>   {{search.original_title}}
+              </p>
+              <p v-else-if="search.original_name">
                 <strong>Titolo Originale:</strong>   {{search.original_name}}
               </p>
+
               <p>
                 <strong>Lingua origiinale:</strong>   {{search.original_language}}
               </p>
@@ -89,6 +66,8 @@
                 {{search.overview}}
               </p>
             </div>
+
+          </div>          
 
           </div>
         </div>
