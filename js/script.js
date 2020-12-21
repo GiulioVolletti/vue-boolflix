@@ -8,6 +8,7 @@ var flixApp = new Vue (
 
     },
     methods:{
+      flagIcon: function(language){},
       searchClick: function() {
         console.log(this.textSearch);
         if (this.textSearch != "") {

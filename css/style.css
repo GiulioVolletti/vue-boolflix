@@ -57,11 +57,21 @@ main .container {
   margin: 15px;
   cursor: pointer;
   height: 330px;
+  width: 220px;
   border: 2px solid white;
   position: relative;
 }
+
 .img_container img {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.flag > img{
+width: 30px;
+height: auto;
+vertical-align: middle;
 }
 
 .info_display {
@@ -77,6 +87,7 @@ main .container {
 }
 
 .info_display p {
+  margin-bottom: 5px;
   color: white;
 }
 

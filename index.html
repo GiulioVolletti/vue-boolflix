@@ -28,9 +28,11 @@
 
       <main>
         <div class="container">
-          <div v-if="search.poster_path" v-for="search in arraySearch" class="img_container">
+          <div  v-for="search in arraySearch" class="img_container">
 
-            <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="">
+            <img v-if="search.poster_path" :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="poster">
+            <img v-else src="https://storiavoce.com/wp-content/plugins/lightbox/images/No-image-found.jpg" alt="not found">
+
 
             <div class="info_display">
               <p v-if="search.title">
@@ -49,8 +51,10 @@
                 <strong>Titolo Originale:</strong>   {{search.original_name}}
               </p>
 
-              <p>
-                <strong>Lingua origiinale:</strong>   {{search.original_language}}
+              <p class="flag">
+                <strong>Lingua origiinale:</strong>
+                <span v-if="search.original_language != 'it' && search.original_language != 'en' " > {{search.original_language}} </span>
+                <img  v-else :src="'img/flag-' + search.original_language +'.jpg'" :alt="search.original_language">
               </p>
               <p><strong>Voto:</strong>
                 <i v-if="numbers <= (search.vote_average / 2).toFixed(0)" v-for="numbers in 5" class="fas fa-star"></i>
@@ -67,7 +71,7 @@
               </p>
             </div>
 
-          </div>          
+          </div>
 
           </div>
         </div>
