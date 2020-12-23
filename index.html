@@ -28,7 +28,7 @@
 
       <main>
         <div class="container">
-          <div  v-for="search in arraySearch" class="img_container">
+          <div v-for="(search, index) in arraySearch" class="img_container">
 
             <img v-if="search.poster_path" :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="poster">
             <img v-else src="https://storiavoce.com/wp-content/plugins/lightbox/images/No-image-found.jpg" alt="not found">
@@ -65,10 +65,10 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i> -->
               </p>
-              <p>
-                <strong>Cast:</strong>
-                <span  v-for="castName in findCast(search.id)">
-                  {{castName.name}}
+              <p >
+                <strong  >Cast:</strong>
+                <span  v-for="castname in search.cast">
+                  {{castname.name}}
                 </span>
               </p>
               <p>

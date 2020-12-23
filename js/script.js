@@ -8,7 +8,7 @@ var flixApp = new Vue (
 
     },
     methods:{
-      findCast: function(cast_id){
+      findCast: function(cast_id, number){
 
         axios
           .get( "https://api.themoviedb.org/3/movie/" + cast_id + "/credits" ,{
@@ -20,12 +20,22 @@ var flixApp = new Vue (
           (element3) => {
             const arrayNew = [];
             // console.log(element3.data.cast);
-            for (var i = 0; i < 5; i++) {
-              arrayNew.push(element3.data.cast[i])
+            for (var i = 1; i <= 5; i++) {
+              var object = {
+                name: element3.data.cast[i].name
+              }
+              arrayNew.push(object)
+
 
             }
-            console.log(arrayNew);
-            return arrayNew
+            this.arraySearch[number].cast = arrayNew
+
+      
+            this.$forceUpdate();
+            // console.log(arrayNew);
+            console.log(this.arraySearch);
+
+
           }
         );
       },
@@ -33,7 +43,7 @@ var flixApp = new Vue (
       searchClick: function() {
         console.log(this.textSearch);
         if (this.textSearch != "") {
-          // this.arraySearch = [];
+
           axios
             .get( "https://api.themoviedb.org/3/search/movie/",{
               params:{
@@ -49,6 +59,7 @@ var flixApp = new Vue (
                   this.arraySearch = element.data.results
 
                   // console.log(this.arraySearch);
+                  this.$forceUpdate();
                 }
               );
 
@@ -67,15 +78,26 @@ var flixApp = new Vue (
                     this.arraySearch.push(element2.data.results[i])
                   }
                   // console.log(element2.data.results);
+
+                  this.arraySearch.forEach((item, index) => {
+                    // console.log(item);
+                    console.log(index);
+                    this.findCast(item.id, index)
+                  });
+                  console.log(this.arraySearch);
+                  this.$forceUpdate();
                 }
               );
 
-            // console.log(this.arraySearch);
+
         };
+
+
         this.textSearch = ""
       },
 
     },
+
 
   }
 );
