@@ -8,10 +8,10 @@ var flixApp = new Vue (
 
     },
     methods:{
-      findCast: function(cast_id, number){
+      findCast: function(cast_id, number, tipe){
 
         axios
-          .get( "https://api.themoviedb.org/3/movie/" + cast_id + "/credits" ,{
+          .get( "https://api.themoviedb.org/3/" + tipe + "/" + cast_id + "/credits" ,{
             params:{
               api_key: "4a59e1623a8f16134b5fe205c4d4923e",
             }
@@ -30,7 +30,7 @@ var flixApp = new Vue (
             }
             this.arraySearch[number].cast = arrayNew
 
-      
+
             this.$forceUpdate();
             // console.log(arrayNew);
             console.log(this.arraySearch);
@@ -58,6 +58,12 @@ var flixApp = new Vue (
                   // console.log(element.data.results);
                   this.arraySearch = element.data.results
 
+                  this.arraySearch.forEach((item, index) => {
+
+                    // console.log(item);
+                    // console.log(index);
+                    this.findCast(item.id, index, "movie")
+                  });
                   // console.log(this.arraySearch);
                   this.$forceUpdate();
                 }
@@ -74,16 +80,18 @@ var flixApp = new Vue (
             )
               .then(
                 (element2) => {
+
+
                   for (var i = 0; i < element2.data.results.length; i++) {
+
                     this.arraySearch.push(element2.data.results[i])
+                    
                   }
                   // console.log(element2.data.results);
 
-                  this.arraySearch.forEach((item, index) => {
-                    // console.log(item);
-                    console.log(index);
-                    this.findCast(item.id, index)
-                  });
+
+
+
                   console.log(this.arraySearch);
                   this.$forceUpdate();
                 }
