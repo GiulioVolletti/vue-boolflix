@@ -5,6 +5,7 @@ var flixApp = new Vue (
     data:{
       textSearch: "",
       arraySearch:[],
+      arrayTelefilm: [],
 
     },
     methods:{
@@ -39,7 +40,31 @@ var flixApp = new Vue (
           }
         );
       },
+      findTelefilmCast: function(cast_id, number){
+        axios
+          .get( "https://api.themoviedb.org/3/tv/" + cast_id + "/credits",{
+            params: {
+              api_key: "4a59e1623a8f16134b5fe205c4d4923e",
+            }
+          }
+        ).then(
+          (element3) => {
+            const arrayNew2 = [];
+            if (element3.data.cast.length >= 5) {
+              for (let i = 0; i < 5; i++) {
+                let object = {
+                  name: element3.data.cast[i].name
+                };
+                arrayNew2.push(object);
+              }
+            }
+            this.arrayTelefilm[number].cast = arrayNew2;
+            this.$forceUpdate();
+          }
+        )
+      },
 
+      // search telefilm and/or tv
       searchClick: function() {
         console.log(this.textSearch);
         if (this.textSearch != "") {
@@ -84,15 +109,16 @@ var flixApp = new Vue (
 
                   for (var i = 0; i < element2.data.results.length; i++) {
 
-                    this.arraySearch.push(element2.data.results[i])
-                    
-                  }
+                    this.arrayTelefilm.push(element2.data.results[i])
+                  };
                   // console.log(element2.data.results);
+                  this.arrayTelefilm.forEach((item, index) => {
+                    this.findTelefilmCast(item.id, index)
+                  });
 
+                  this.arraySearch = this.arraySearch.concat(this.arrayTelefilm)
 
-
-
-                  console.log(this.arraySearch);
+                  // console.log(this.arraySearch);
                   this.$forceUpdate();
                 }
               );
