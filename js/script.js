@@ -6,9 +6,31 @@ var flixApp = new Vue (
       textSearch: "",
       arraySearch:[],
       arrayTelefilm: [],
+      filmGenre: [],
 
     },
+    created: function (){
+      axios
+        .get("https://api.themoviedb.org/3/genre/movie/list",{
+          params:{
+            api_key: "4a59e1623a8f16134b5fe205c4d4923e",
+            language: "it-IT"
+          }
+        }
+      ).then(
+        (element) => {
+          this.filmGenre = element.data.genres
+        }
+      )
+    },
     methods:{
+      genreID: function (idGenre){
+        for (var i = 0; i < this.filmGenre.length; i++) {
+          if (this.filmGenre[i].id == idGenre) {
+            return this.filmGenre[i].name
+          }
+        }
+      },
       findCast: function(cast_id, number, tipe){
 
         axios

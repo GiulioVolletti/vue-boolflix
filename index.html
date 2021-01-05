@@ -56,23 +56,28 @@
                 <span v-if="search.original_language != 'it' && search.original_language != 'en' " > {{search.original_language}} </span>
                 <img  v-else :src="'img/flag-' + search.original_language +'.jpg'" :alt="search.original_language">
               </p>
+              <!-- films star -->
               <p><strong>Voto:</strong>
                 <i v-if="numbers <= (search.vote_average / 2).toFixed(0)" v-for="numbers in 5" class="fas fa-star"></i>
                 <i v-else class="far fa-star"></i>
-
-                <!-- <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i> -->
               </p>
+              <!-- cast in films -->
               <p v-if="search.cast">
-                <strong  >Cast:</strong>
+                <strong  >Cast:</strong> <br>
                 <span  v-for="castname in search.cast">
-                  {{castname.name}} ,
+                  {{castname.name}}
                 </span>
               </p>
+              <!-- genres -->
               <p>
-                <strong>Overview:</strong>
+                <strong  >Genere:</strong> <br>
+                <span  v-for="(genre, index) in search.genre_ids">
+                  - {{index}} {{genreID(genre)}}
+                </span>
+              </p>
+              <!-- overview -->
+              <p>
+                <strong>Overview:</strong> <br>
                 {{search.overview}}
               </p>
             </div>
