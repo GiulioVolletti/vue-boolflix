@@ -20,20 +20,32 @@
         <div class="container">
           <h1>BoolFlix</h1>
           <div class="user_search">
+
+            <!-- select for genre -->
+            <select @change="selectGenre" name="selezione">
+              <option value="all">All</option>
+              <option v-for="genreSelect in filmGenre" :value="genreSelect.name">{{genreSelect.name}}</option>
+            </select>
+            <!-- /select for genre -->
+
+            <!-- search films/tv -->
             <input type="text" name=""  v-model="textSearch">
             <i v-on:click="searchClick" class="fas fa-search"></i>
+            <!-- /search films/tv -->
           </div>
         </div>
       </header>
 
       <main>
         <div class="container">
-          <div v-for="(search, index) in arraySearch" class="img_container">
+          <!-- films tv series -->
+          <div v-if="genreSelected == 'all' || genreSelection(search.genre_ids).includes(genreSelected)" v-for="(search, index) in arraySearch" class="img_container">
 
+            <!-- cover film / tv -->
             <img v-if="search.poster_path" :src="'https://image.tmdb.org/t/p/w220_and_h330_face' + search.poster_path" alt="poster">
             <img v-else src="https://storiavoce.com/wp-content/plugins/lightbox/images/No-image-found.jpg" alt="not found">
 
-
+            <!-- title film / tv -->
             <div class="info_display">
               <p v-if="search.title">
                 <strong>Titolo:</strong>
@@ -44,6 +56,7 @@
                  {{search.name}}
               </p>
 
+              <!-- original title -->
               <p v-if="search.original_title">
                 <strong>Titolo Originale:</strong>   {{search.original_title}}
               </p>
@@ -51,16 +64,19 @@
                 <strong>Titolo Originale:</strong>   {{search.original_name}}
               </p>
 
+              <!-- original language -->
               <p class="flag">
                 <strong>Lingua origiinale:</strong>
                 <span v-if="search.original_language != 'it' && search.original_language != 'en' " > {{search.original_language}} </span>
                 <img  v-else :src="'img/flag-' + search.original_language +'.jpg'" :alt="search.original_language">
               </p>
+
               <!-- films star -->
               <p><strong>Voto:</strong>
                 <i v-if="numbers <= (search.vote_average / 2).toFixed(0)" v-for="numbers in 5" class="fas fa-star"></i>
                 <i v-else class="far fa-star"></i>
               </p>
+
               <!-- cast in films -->
               <p v-if="search.cast">
                 <strong  >Cast:</strong> <br>
@@ -68,6 +84,7 @@
                   {{castname.name}}
                 </span>
               </p>
+
               <!-- genres -->
               <p>
                 <strong  >Genere:</strong> <br>
@@ -75,6 +92,7 @@
                   - {{index}} {{genreID(genre)}}
                 </span>
               </p>
+
               <!-- overview -->
               <p>
                 <strong>Overview:</strong> <br>

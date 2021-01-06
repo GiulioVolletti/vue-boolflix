@@ -7,9 +7,12 @@ var flixApp = new Vue (
       arraySearch:[],
       arrayTelefilm: [],
       filmGenre: [],
+      genreSelected: "all",
 
     },
     created: function (){
+
+      // genre array
       axios
         .get("https://api.themoviedb.org/3/genre/movie/list",{
           params:{
@@ -24,6 +27,18 @@ var flixApp = new Vue (
       )
     },
     methods:{
+      selectGenre: function (element) {
+        this.genreSelected = element.target.value;
+      },
+      genreSelection: function (arrayElement){
+        var arraySelectionNew = [];
+        for (var i = 0; i < this.filmGenre.length; i++) {
+          if (arrayElement.includes(this.filmGenre[i].id)) {
+            arraySelectionNew.push(this.filmGenre[i].name)
+          };
+        };
+        return arraySelectionNew
+      },
       genreID: function (idGenre){
         for (var i = 0; i < this.filmGenre.length; i++) {
           if (this.filmGenre[i].id == idGenre) {
@@ -49,15 +64,12 @@ var flixApp = new Vue (
               }
               arrayNew.push(object)
 
-
             }
             this.arraySearch[number].cast = arrayNew
 
-
             this.$forceUpdate();
             // console.log(arrayNew);
-            console.log(this.arraySearch);
-
+            // console.log(this.arraySearch);
 
           }
         );
