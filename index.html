@@ -22,7 +22,7 @@
           <div class="user_search">
 
             <!-- select for genre -->
-            <select @change="selectGenre" name="selezione">
+            <select v-model="genreSelected" name="selezione">
               <option value="all">All</option>
               <option v-for="genreSelect in filmGenre" :value="genreSelect.name">{{genreSelect.name}}</option>
             </select>

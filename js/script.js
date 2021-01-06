@@ -27,9 +27,7 @@ var flixApp = new Vue (
       )
     },
     methods:{
-      selectGenre: function (element) {
-        this.genreSelected = element.target.value;
-      },
+      
       genreSelection: function (arrayElement){
         var arraySelectionNew = [];
         for (var i = 0; i < this.filmGenre.length; i++) {
