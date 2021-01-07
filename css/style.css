@@ -30,6 +30,10 @@ header .container{
 header h1 {
   color: #AC1B22;
 }
+input, select {
+  vertical-align: middle;
+  outline: none;
+}
 
 .user_search i {
   color: white;

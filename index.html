@@ -29,7 +29,7 @@
             <!-- /select for genre -->
 
             <!-- search films/tv -->
-            <input type="text" name=""  v-model="textSearch">
+            <input v-on:keyup.enter="searchClick" type="text" name=""  v-model="textSearch">
             <i v-on:click="searchClick" class="fas fa-search"></i>
             <!-- /search films/tv -->
           </div>
