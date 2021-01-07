@@ -27,7 +27,7 @@ var flixApp = new Vue (
       )
     },
     methods:{
-      
+
       genreSelection: function (arrayElement){
         var arraySelectionNew = [];
         for (var i = 0; i < this.filmGenre.length; i++) {
@@ -37,6 +37,7 @@ var flixApp = new Vue (
         };
         return arraySelectionNew
       },
+
       genreID: function (idGenre){
         for (var i = 0; i < this.filmGenre.length; i++) {
           if (this.filmGenre[i].id == idGenre) {
@@ -44,6 +45,8 @@ var flixApp = new Vue (
           }
         }
       },
+
+      // findcast tv
       findCast: function(cast_id, number, tipe){
 
         axios
@@ -64,14 +67,14 @@ var flixApp = new Vue (
 
             }
             this.arraySearch[number].cast = arrayNew
-
             this.$forceUpdate();
             // console.log(arrayNew);
             // console.log(this.arraySearch);
-
           }
         );
       },
+
+      // findCast telefilm
       findTelefilmCast: function(cast_id, number){
         axios
           .get( "https://api.themoviedb.org/3/tv/" + cast_id + "/credits",{
@@ -98,9 +101,10 @@ var flixApp = new Vue (
 
       // search telefilm and/or tv
       searchClick: function() {
-        console.log(this.textSearch);
-        if (this.textSearch != "") {
 
+        this.arrayTelefilm = [];
+        // console.log(this.textSearch);
+        if (this.textSearch != "") {
           axios
             .get( "https://api.themoviedb.org/3/search/movie/",{
               params:{
@@ -112,11 +116,9 @@ var flixApp = new Vue (
             )
               .then(
                 (element) => {
-                  // console.log(element.data.results);
                   this.arraySearch = element.data.results
 
                   this.arraySearch.forEach((item, index) => {
-
                     // console.log(item);
                     // console.log(index);
                     this.findCast(item.id, index, "movie")
@@ -155,15 +157,11 @@ var flixApp = new Vue (
                 }
               );
 
-
         };
-
-
         this.textSearch = ""
       },
 
     },
-
 
   }
 );
